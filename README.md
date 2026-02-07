@@ -1,2 +1,3 @@
-# college-daily-planner-with-weekly-schedule-absence-tracking-weekly-planned-vs-sp
-Exported from Caffeine project: College daily planner with weekly schedule, absence tracking, weekly planned vs spent hours (rollover), and semester reports
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

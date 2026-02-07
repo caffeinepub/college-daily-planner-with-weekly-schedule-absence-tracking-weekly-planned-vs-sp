@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.5rem;
+        
+        /* Warm neutral palette - avoiding blue/purple */
+        --background: 0.98 0.005 60;
+        --foreground: 0.20 0.015 60;
+        
+        --card: 1 0 0;
+        --card-foreground: 0.20 0.015 60;
+        
+        --popover: 1 0 0;
+        --popover-foreground: 0.20 0.015 60;
+        
+        /* Warm terracotta primary */
+        --primary: 0.55 0.15 35;
+        --primary-foreground: 0.98 0.005 60;
+        
+        --secondary: 0.92 0.01 60;
+        --secondary-foreground: 0.25 0.015 60;
+        
+        --muted: 0.94 0.008 60;
+        --muted-foreground: 0.50 0.012 60;
+        
+        --accent: 0.90 0.012 60;
+        --accent-foreground: 0.25 0.015 60;
+        
+        --destructive: 0.55 0.22 25;
+        --destructive-foreground: 0.98 0.005 60;
+        
+        --border: 0.88 0.008 60;
+        --input: 0.88 0.008 60;
+        --ring: 0.55 0.15 35;
+        
+        /* Chart colors - warm palette */
+        --chart-1: 0.60 0.18 35;
+        --chart-2: 0.65 0.15 50;
+        --chart-3: 0.55 0.12 70;
+        --chart-4: 0.70 0.14 25;
+        --chart-5: 0.58 0.16 45;
+    }
+
+    .dark {
+        --background: 0.15 0.015 60;
+        --foreground: 0.95 0.008 60;
+        
+        --card: 0.18 0.015 60;
+        --card-foreground: 0.95 0.008 60;
+        
+        --popover: 0.16 0.015 60;
+        --popover-foreground: 0.95 0.008 60;
+        
+        /* Lighter warm primary for dark mode */
+        --primary: 0.70 0.14 35;
+        --primary-foreground: 0.15 0.015 60;
+        
+        --secondary: 0.22 0.015 60;
+        --secondary-foreground: 0.95 0.008 60;
+        
+        --muted: 0.25 0.015 60;
+        --muted-foreground: 0.65 0.010 60;
+        
+        --accent: 0.28 0.018 60;
+        --accent-foreground: 0.95 0.008 60;
+        
+        --destructive: 0.60 0.20 25;
+        --destructive-foreground: 0.95 0.008 60;
+        
+        --border: 0.30 0.015 60;
+        --input: 0.30 0.015 60;
+        --ring: 0.70 0.14 35;
+        
+        /* Chart colors for dark mode */
+        --chart-1: 0.65 0.16 35;
+        --chart-2: 0.70 0.14 50;
+        --chart-3: 0.60 0.12 70;
+        --chart-4: 0.75 0.13 25;
+        --chart-5: 0.63 0.15 45;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+        /* Prevent horizontal overflow on mobile */
+        overflow-x: hidden;
+        /* Improve touch scrolling on mobile */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Mobile-specific improvements */
+    @media (max-width: 768px) {
+        /* Ensure safe area handling for notched devices */
+        body {
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+
+        /* Improve tap targets on mobile */
+        button, a, [role="button"] {
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        /* Remove tap highlight color on Android */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+    }
+
+    /* Horizontal scroll container for tables on mobile */
+    .mobile-scroll-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-scroll-container::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .mobile-scroll-container::-webkit-scrollbar-thumb {
+        background: oklch(var(--muted-foreground) / 0.3);
+        border-radius: 3px;
+    }
+}

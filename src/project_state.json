@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 9,
+  "summary": "College daily planning app delivered as a native Android APK (not a mobile-browser web app), with weekly schedule, absence tracking, weekly per-course planned vs spent hours (with unused hours rolling over), and detailed semester reports.",
+  "architectural_notes": [
+    "Project direction change: deliver as a native Android APK (installable), not primarily as a mobile-browser web app."
+  ],
+  "known_issues": [
+    "Semester creation fails (user reports 'semester creating failed')."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-implement-internet-identity-based-user-flow-and-ensure-all-user-data-is-scoped-per-authenticated-principal-create-read-update-only-within-the-signed-in-user-s-dataset",
+      "title": "Implement Internet Identity-based user flow and ensure all user data is scoped per authenticated principal (create/read/update only within the signed-in user’s dataset).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-weekly-schedule-ui-that-lets-the-user-view-and-manage-their-weekly-schedule-by-day-and-associate-schedule-items-with-a-course-optional-and-or-a-category-label",
+      "title": "Build a weekly schedule UI that lets the user view and manage their weekly schedule (by day) and associate schedule items with a course (optional) and/or a category label.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-absence-tracking-ui-per-course-including-adding-an-absence-entry-date-optional-note-and-viewing-absence-totals-within-a-selected-semester",
+      "title": "Build absence tracking UI per course, including adding an absence entry (date + optional note) and viewing absence totals within a selected semester.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-weekly-hours-tracking-ui-per-course-a-set-planned-hours-for-the-week-b-log-time-spent-entries-for-the-week-and-c-show-computed-weekly-summary-including-rollover-in-available-planned-hours-spent-hours-and-unused-hours-rollover-out",
+      "title": "Build weekly hours tracking UI per course: (a) set planned hours for the week, (b) log time spent entries for the week, and (c) show computed weekly summary including rollover-in, available planned hours, spent hours, and unused hours (rollover-out).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-semester-reports-section-with-detailed-summaries-per-course-totals-planned-vs-spent-weekly-breakdowns-absence-totals-and-rollover-effects-across-the-semester-weeks",
+      "title": "Create a semester reports section with detailed summaries: per-course totals (planned vs spent), weekly breakdowns, absence totals, and rollover effects across the semester weeks.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-navigation-and-information-architecture-for-the-app-semester-selector-manager-courses-weekly-schedule-weekly-hours-absences-and-reports-with-consistent-week-semester-selection-behavior-across-pages",
+      "title": "Add navigation and information architecture for the app: Semester selector/manager, Courses, Weekly Schedule, Weekly Hours, Absences, and Reports, with consistent week/semester selection behavior across pages.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-cohesive-visual-theme-for-a-college-productivity-planner-colors-typography-spacing-and-component-styling-consistently-across-all-screens-without-using-a-blue-purple-primary-palette",
+      "title": "Apply a cohesive visual theme for a college productivity planner (colors, typography, spacing, and component styling) consistently across all screens without using a blue/purple primary palette.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-display-required-static-image-assets-in-the-frontend-at-frontend-public-assets-generated-and-use-them-in-the-ui-where-appropriate",
+      "title": "Generate and display required static image assets in the frontend at `frontend/public/assets/generated` and use them in the UI where appropriate.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-frontend-fully-usable-on-android-mobile-browsers-by-ensuring-all-screens-are-mobile-responsive-touch-friendly-and-do-not-rely-on-hover-only-interactions",
+      "title": "Make the frontend fully usable on Android mobile browsers by ensuring all screens are mobile-responsive, touch-friendly, and do not rely on hover-only interactions.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-android-specific-layout-issues-caused-by-dense-tables-grids-by-ensuring-content-is-readable-and-scrollable-on-small-screens-e-g-make-long-tables-horizontally-scrollable-and-ensure-multi-column-grids-collapse-appropriately",
+      "title": "Fix Android-specific layout issues caused by dense tables/grids by ensuring content is readable and scrollable on small screens (e.g., make long tables horizontally scrollable, and ensure multi-column grids collapse appropriately).",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-android-sign-in-experience-works-reliably-with-internet-identity-by-handling-mobile-browser-constraints-pop-up-redirect-behavior-and-presenting-clear-english-user-facing-feedback-if-sign-in-cannot-be-completed-due-to-browser-settings",
+      "title": "Ensure the Android sign-in experience works reliably with Internet Identity by handling mobile browser constraints (pop-up/redirect behavior) and presenting clear, English user-facing feedback if sign-in cannot be completed due to browser settings.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-android-apk-packaging-target-for-the-existing-react-frontend-so-the-app-can-be-installed-and-launched-as-a-native-android-app-apk-rather-than-being-used-in-a-mobile-browser",
+      "title": "Add an Android APK packaging target for the existing React frontend so the app can be installed and launched as a native Android app (APK), rather than being used in a mobile browser.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-internet-identity-sign-in-ux-and-error-messaging-to-reflect-an-installed-android-app-context-apk-rather-than-a-mobile-browser-context-while-keeping-all-user-facing-text-in-english",
+      "title": "Update Internet Identity sign-in UX and error messaging to reflect an installed Android app context (APK) rather than a mobile browser context, while keeping all user-facing text in English.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-semester-creation-error-handling-in-the-manage-page-so-the-user-sees-a-clear-english-error-message-that-includes-the-underlying-backend-failure-reason-e-g-unauthorized-vs-other-failures-instead-of-only-a-generic-failure-toast",
+      "title": "Improve semester creation error handling in the Manage page so the user sees a clear English error message that includes the underlying backend failure reason (e.g., Unauthorized vs other failures), instead of only a generic failure toast.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Weekly schedule view for college planning",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Track absences",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Track total hours spent per course on a weekly basis",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Plan total hours to spend per course on a weekly basis",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Roll over unused planned hours to the next week",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Detailed reports for each semester",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Create core backend data model and CRUD APIs for: semesters, courses (linked to a semester), weekly schedule items, absence records, weekly planned hours per course, and weekly time-spent logs per course.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Implement weekly planned-hours rollover logic: for each course, compute remaining planned hours in a week as (planned - spent); if positive, automatically transfer that unused amount to the next week as additional available planned hours; if negative, do not transfer (no debt) unless explicitly specified in UI as an override.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Ensure the app works well on Android devices (mobile-responsive UI and compatibility testing/support)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Package and deliver the app as a native Android APK (installable app), not a mobile-browser web app",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Fix the root cause of semester creation failing for signed-in users by ensuring authenticated principals have the required \"user\" permission in backend access control before calling semester CRUD methods (createSemester/getSemesters).",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "College daily planner with weekly schedule, absence tracking, weekly planned vs spent hours (rollover), and semester reports",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

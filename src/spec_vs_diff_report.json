@@ -1,0 +1,48 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T08:56:14.654Z",
+  "summary": "REQ-17 (frontend error reporting for semester creation) appears implemented via actor-availability checks and detailed toast messages using a new error-normalization utility. REQ-16 (backend fix to ensure authenticated principals gain/retain the required #user permission prior to calling semester CRUD) is not evidenced in the diff: semester CRUD remains permission-gated, but no mechanism is shown that grants signed-in principals the #user permission so createSemester/getSemesters won’t trap for authenticated users.",
+  "missing_requirements": [
+    {
+      "id": "REQ-16",
+      "requirement": "Fix the root cause of semester creation failing for signed-in users by ensuring authenticated principals have the required \"user\" permission in backend access control before calling semester CRUD methods (createSemester/getSemesters).",
+      "reason": "The backend still enforces `AccessControl.hasPermission(..., #user)` checks and traps as Unauthorized, but the diff does not show any logic that assigns/grants the #user permission to an authenticated (non-anonymous) principal as part of sign-in or first use. Without an explicit grant path, signed-in users may still hit the Unauthorized trap.",
+      "evidence": [
+        "backend/main.mo (createSemester/getSemesters still trap unless hasPermission #user; no shown grant/assignment logic in provided diff snippet)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Improved error handling for course creation (actor availability checks and detailed error toasts) beyond the requested semester creation error handling.",
+      "reason": "BuildRequest REQ-17 only asks to improve semester creation error handling on the Manage page; the diff adds analogous handling for courses as well.",
+      "evidence": [
+        "frontend/src/pages/ManagePage.tsx (handleCreateCourse try/catch with getErrorMessage + actor readiness toast)"
+      ]
+    },
+    {
+      "description": "New shared frontend utility to normalize unknown errors (getErrorMessage).",
+      "reason": "REQ-17 requires better semester creation error messages, but does not explicitly request adding a new reusable utility module; this is an implementation addition not directly specified.",
+      "evidence": [
+        "frontend/src/utils/getErrorMessage.ts"
+      ]
+    },
+    {
+      "description": "Backend permission-gating added/expanded for user profile operations (getCallerUserProfile/saveCallerUserProfile) beyond the semester-creation fix scope.",
+      "reason": "REQ-16 is specifically about semester creation/getSemesters failing for signed-in users; changes shown include profile authorization traps which are not requested in this build.",
+      "evidence": [
+        "backend/main.mo (getCallerUserProfile/saveCallerUserProfile now trap unless hasPermission #user)"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/hooks/useSemesters.ts",
+    "frontend/src/pages/ManagePage.tsx",
+    "frontend/src/utils/getErrorMessage.ts",
+    "project_state.json"
+  ]
+}

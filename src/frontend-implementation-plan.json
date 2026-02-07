@@ -1,0 +1,33 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Manage: clearer semester creation errors and actor readiness messaging",
+  "requirements": [
+    {
+      "id": "REQ-17",
+      "summary": "Show clear English semester creation failure messages (including underlying backend/agent reason) and handle actor-unavailable state in the Manage page.",
+      "acceptanceCriteria": [
+        "If semester creation fails, the UI shows an English toast that includes the backend/agent error message when available (e.g., \"Failed to create semester: Unauthorized: ...\").",
+        "If the actor is unavailable, the UI shows an English error message indicating the app is not ready and the action cannot be completed.",
+        "Successful semester creation behavior remains unchanged (success toast, dialog closes, list refreshes)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/getErrorMessage.ts",
+          "operation": "create",
+          "description": "Add a small utility to normalize unknown thrown values (Error, agent errors, strings, objects) into a readable English message suitable for toast display."
+        },
+        {
+          "path": "frontend/src/pages/ManagePage.tsx",
+          "operation": "modify",
+          "description": "Update semester creation flow to (1) detect actor not ready and show an English \"app not ready\" error toast without attempting the mutation, and (2) on mutation failure show a toast like \"Failed to create semester: <reason>\" using the new getErrorMessage utility while preserving existing success behavior (success toast, dialog close, list refresh)."
+        },
+        {
+          "path": "frontend/src/hooks/useSemesters.ts",
+          "operation": "modify",
+          "description": "Keep throwing a meaningful error when the actor is unavailable and ensure errors propagate to the caller unchanged so ManagePage can surface the underlying backend/agent failure reason in its toast (no generic swallowing)."
+        }
+      ]
+    }
+  ]
+}

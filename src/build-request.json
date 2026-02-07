@@ -1,0 +1,67 @@
+{
+  "kind": "build_request",
+  "title": "Fix semester creation failure and improve error reporting",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-16",
+      "text": "Fix the root cause of semester creation failing for signed-in users by ensuring authenticated principals have the required \"user\" permission in backend access control before calling semester CRUD methods (createSemester/getSemesters).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "semester creating failed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After signing in with Internet Identity, calling createSemester from the frontend succeeds and returns a new semester id (no Unauthorized trap).",
+        "After creating a semester, getSemesters returns the newly created semester for the same authenticated principal.",
+        "The fix does not allow anonymous principals to create semesters."
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Improve semester creation error handling in the Manage page so the user sees a clear English error message that includes the underlying backend failure reason (e.g., Unauthorized vs other failures), instead of only a generic failure toast.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "semester creating failed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "If semester creation fails, the UI shows an English toast that includes the backend/agent error message when available (e.g., \"Failed to create semester: Unauthorized: ...\").",
+        "If the actor is unavailable, the UI shows an English error message indicating the app is not ready and the action cannot be completed.",
+        "Successful semester creation behavior remains unchanged (success toast, dialog closes, list refreshes)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor in backend/main.mo (no additional backend services).",
+    "Do not edit files under frontend/src/components/ui or any other paths listed in frontend.immutablePaths.",
+    "Use English for all user-facing text."
+  ],
+  "nonGoals": [
+    "Adding new semester fields or changing the semester data model beyond what is required to fix the failure.",
+    "Implementing new features for courses, schedule, absences, weekly hours, or reports.",
+    "Adding third-party authentication providers or external databases."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

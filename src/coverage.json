@@ -1,0 +1,55 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T08:56:14.656Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 1,
+    "items": [
+      {
+        "id": "REQ-16",
+        "summary": "Fix the root cause of semester creation failing for signed-in users by ensuring authenticated principals have the required \"user\" permission in backend access control before calling semester CRUD methods (createSemester/getSemesters).",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-17",
+        "summary": "Improve semester creation error handling in the Manage page so the user sees a clear English error message that includes the underlying backend failure reason (e.g., Unauthorized vs other failures), instead of only a generic failure toast.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/utils/getErrorMessage.ts",
+          "frontend/src/pages/ManagePage.tsx",
+          "frontend/src/hooks/useSemesters.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/utils/getErrorMessage.ts",
+          "frontend/src/pages/ManagePage.tsx",
+          "frontend/src/hooks/useSemesters.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useSemesters.ts",
+    "frontend/src/pages/ManagePage.tsx",
+    "frontend/src/utils/getErrorMessage.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

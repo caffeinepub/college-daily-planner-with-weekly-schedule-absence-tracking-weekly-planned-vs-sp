@@ -1,0 +1,26 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-improve-semester-creation-error-handling-in-the-manage-page-so-the-user-sees-a-clear-english-error-message-that-includes-the-underlying-backend-failure-reason-e-g-unauthorized-vs-other-failures-instead-of-only-a-generic-failure-toast",
+      "featureTitle": "Improve semester creation error handling in the Manage page so the user sees a clear English error message that includes the underlying backend failure reason (e.g., Unauthorized vs other failures), instead of only a generic failure toast.",
+      "files": [
+        "frontend/src/hooks/useSemesters.ts",
+        "frontend/src/pages/ManagePage.tsx",
+        "frontend/src/utils/getErrorMessage.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-17"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
